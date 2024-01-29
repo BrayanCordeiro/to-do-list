@@ -19,6 +19,12 @@ public class UserToDoKey implements Serializable{
 
 	public UserToDoKey() {}
 
+	public UserToDoKey(Long userId, Long toDoId) {
+		super();
+		this.userId = userId;
+		this.toDoId = toDoId;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}

@@ -58,7 +58,7 @@ public class ToDo implements Serializable{
 	public ToDo() {}
 
 	public ToDo(Long id, String tittle, String description, Status status, Boolean completed, Date creationDate,
-			Date conclusionForecast, Date conclusionDate, List<UserToDo> user) {
+			Date conclusionForecast, Date conclusionDate) {
 		super();
 		this.id = id;
 		this.tittle = tittle;
@@ -68,7 +68,6 @@ public class ToDo implements Serializable{
 		this.creationDate = creationDate;
 		this.conclusionForecast = conclusionForecast;
 		this.conclusionDate = conclusionDate;
-		this.user = user;
 	}
 
 	public Long getId() {

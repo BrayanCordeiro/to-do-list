@@ -31,11 +31,10 @@ public class User implements Serializable{
 
 	public User() {}
 
-	public User(Long id, String username, List<UserToDo> todo) {
+	public User(Long id, String username) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.todo = todo;
 	}
 
 	public Long getId() {

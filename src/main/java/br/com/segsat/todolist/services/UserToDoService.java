@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.segsat.todolist.domain.UserToDo;
 import br.com.segsat.todolist.domain.UserToDoKey;
 import br.com.segsat.todolist.repository.UserToDoRepository;
+import br.com.segsat.todolist.services.exceptions.DataBaseException;
 
 @Service
 public class UserToDoService {
@@ -20,7 +21,7 @@ public class UserToDoService {
 	}
 	
 	public UserToDo getById(UserToDoKey id) {
-		return userToDoRepository.findById(id).get();
+		return userToDoRepository.findById(id).orElseThrow(() -> new DataBaseException("Id not found"));
 	}
 	
 	public List<UserToDo> getByUserId(Long id){
@@ -31,8 +32,12 @@ public class UserToDoService {
 		return userToDoRepository.findByToDoId(id);
 	}
 	
+	public UserToDo createUserToDo(UserToDo utd) {
+		return userToDoRepository.save(utd);
+	}
+	
 	public UserToDo updateUserToDo(UserToDo utd) {
-		var entity = userToDoRepository.findById(utd.getId()).get();
+		var entity = userToDoRepository.findById(utd.getId()).orElseThrow(() -> new DataBaseException("Id not found"));
 		
 		entity.setToDo(utd.getToDo());
 		entity.setUser(utd.getUser());
@@ -41,7 +46,8 @@ public class UserToDoService {
 	}
 	
 	public void deleteUserToDo(UserToDoKey id) {
-		var entity = userToDoRepository.findById(id).get();
+		var entity = userToDoRepository.findById(id).orElseThrow(() -> new DataBaseException("Id not found"));
 		userToDoRepository.delete(entity);
 	}
+	
 }

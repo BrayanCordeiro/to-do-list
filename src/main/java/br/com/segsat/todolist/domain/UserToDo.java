@@ -30,6 +30,13 @@ public class UserToDo implements Serializable{
 	private ToDo toDo;
 
 	public UserToDo() {}
+	
+	public UserToDo(UserToDoKey id, User user, ToDo toDo) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.toDo = toDo;
+	}
 
 	public UserToDoKey getId() {
 		return id;
